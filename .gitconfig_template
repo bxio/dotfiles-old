@@ -1,0 +1,88 @@
+[core]
+	excludesfile = ~/.gitignore_global
+
+[user]
+	name = #NAME#
+	email = #EMAIL#
+	signingkey = #SIGNINGKEY#
+
+[github]
+	user = #USERNAME#
+
+[credential]
+	helper = osxkeychain
+
+[commit]
+	gpgsign = true
+
+[color]
+	ui = true
+
+[color "branch"]
+	current = magenta
+	remote = cyan
+
+[color "diff"]
+	meta = yellow bold
+	frag = magenta bold
+	old = red reverse
+	new = green reverse
+	whitespace = white reverse
+
+[color "status"]
+	added = green
+	changed = cyan
+	untracked = blue bold
+	branch = magenta
+
+[diff]
+	tool = meld
+
+[difftool]
+	prompt = false
+
+[difftool "meld"]
+	trustExitCode = true
+	cmd = meld \"$LOCAL\" \"$REMOTE\" --label \"DIFF (ORIGINAL MY)\"
+
+[merge]
+	tool = meld
+
+[mergetool]
+	prompt = false
+
+[mergetool "meld"]
+	trustExitCode = true
+	cmd = meld --auto-merge \"$LOCAL\" \"$BASE\" \"$REMOTE\" --output \"$MERGED\" --label \"MERGE (REMOTE BASE MY)\"
+
+[push]
+	default = simple
+
+[alias]
+    unstage = reset --hard HEAD
+    dt = difftool
+    lg = !"git lg1"
+    lg1 = !"git lg1-specific --all"
+    lg2 = !"git lg2-specific --all"
+    lg3 = !"git lg3-specific --all"
+
+    lg1-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)'
+    lg2-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
+    lg3-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset) %C(bold cyan)(committed: %cD)%C(reset) %C(auto)%d%C(reset)%n''          %C(white)%s%C(reset)%n''          %C(dim white)- %an <%ae> %C(reset) %C(dim white)(committer: %cn <%ce>)%C(reset)'
+
+[url "git@github.com:"]
+
+    insteadOf = "gh:"
+    pushInsteadOf = "github:"
+    pushInsteadOf = "git://github.com/"
+
+[url "git://github.com/"]
+    insteadOf = "github:"
+
+[url "git@gist.github.com:"]
+    insteadOf = "gst:"
+    pushInsteadOf = "gist:"
+    pushInsteadOf = "git://gist.github.com/"
+
+[url "git://gist.github.com/"]
+    insteadOf = "gist:"
