@@ -142,39 +142,13 @@ if [[ $REPLY =~ ^[Yy]$ ]]
 then
 curl -s 'https://macapps.link/en/firefox-chromecanary-torbrowser-alfred-fantastical-vscode-transmission-caffeine-istatmenus-calibre-skype-telegram' | sh
 fi
-# read -p "Do you wish to setup sublime configs? " -n 1 -r
-# echo
-# if [[ $REPLY =~ ^[Yy]$ ]]
-# then
 
-# 	#Backup sublime prefs
-# 	mkdir -p "$HOME/dotfiles_old/sublime/Packages"
-# 	cp -r "$HOME/Library/Application Support/Sublime Text 3/Packages" "$HOME/dotfiles_old/sublime/Packages"
-# 	rm -r "$HOME/Library/Application Support/Sublime Text 3/Packages"
+read -p "Do you wish to copy iTunes AppleScripts? " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+cp iTunesScripts ~/Library/iTunes/Scripts
 
-# 	mkdir -p "$HOME/dotfiles_old/sublime/Installed Packages"
-# 	cp -r "$HOME/Library/Application Support/Sublime Text 3/Installed Packages" "$HOME/dotfiles_old/sublime/Installed Packages"
-# 	rm -r "$HOME/Library/Application Support/Sublime Text 3/Installed Packages"
-
-# 	#Remove any old configs sublime
-# 	if [ -d ~/.sublime ]
-# 	then
-# 		rm -r ~/.sublime
-# 	fi
-
-	#Setup sublime
-	ln -s  ~/.dotfiles/.sublime ~
-
-	ln -s "$HOME/.sublime/Packages" "$HOME/Library/Application Support/Sublime Text 3/"
-	ln -s "$HOME/.sublime/Installed Packages" "$HOME/Library/Application Support/Sublime Text 3/"
-
-
-	#Add subl command
-	if [ ! -f "$HOME/bin/subl" ]
-	then
-		mkdir -p ~/bin
-		ln -s "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" ~/bin/subl
-	fi
 fi
 
 read -p "Do you wish to setup some Apple defaults? " -n 1 -r
