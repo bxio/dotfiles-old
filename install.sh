@@ -40,7 +40,7 @@ then
 	brew tap buo/cask-upgrade
 
 	# Install some default apps
-	brew cask install bartender binary-ninja burp-suite disablemonitor discord docker dropbox filezilla gimp iterm2 java keepassx keka keybase mactex meld messenger metasploit microsoft-office pycharm runescape skim slack speedcrunch spotify teamviewer tunnelblick vlc vmware-fusion webstorm wireshark
+	brew cask install 1password alfred bartender caffeine calibre disablemonitor discord docker dropbox fantastical filezilla firefox istat-menus iterm2 java keybase mactex meld messenger metasploit microsoft-office rocket runescape skype slack speedcrunch teamviewer telegram telegram-desktop the-unarchiver torbrowser transmission vlc visual-studio-code vmware-fusion wireshark
 fi
 
 if [ -d "/Applications/iTerm.app/" ]
@@ -134,13 +134,6 @@ then
 	nvm alias default node
 	npm install npm-check-updates -g
 	npm install pm2 -g
-fi
-
-read -p "Do you wish to setup apps from Macapps.link? " -n 1 -r
-echo
-if [[ $REPLY =~ ^[Yy]$ ]]
-then
-curl -s 'https://macapps.link/en/firefox-chromecanary-torbrowser-alfred-fantastical-vscode-transmission-caffeine-istatmenus-calibre-skype-telegram' | sh
 fi
 
 read -p "Do you wish to copy iTunes AppleScripts? " -n 1 -r
