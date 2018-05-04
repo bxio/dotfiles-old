@@ -40,7 +40,7 @@ then
 	brew tap buo/cask-upgrade
 
 	# Install some default apps
-	brew cask install 1password alfred bartender caffeine calibre disablemonitor discord docker dropbox fantastical filezilla firefox istat-menus iterm2 java keybase mactex meld messenger metasploit microsoft-office rocket runescape skype slack speedcrunch teamviewer telegram telegram-desktop the-unarchiver torbrowser transmission vlc visual-studio-code vmware-fusion wireshark
+	brew cask install 1password alfred bartender caffeine calibre cloudapp discord docker dropbox droplr fantastical filezilla firefox franz go2shell handbrake istat-menus iterm2 java jdownloader keybase mactex meld metasploit microsoft-office notion open-in-code rocket runescape skype slack speedcrunch steam teamviewer telegram telegram-desktop the-unarchiver torbrowser transmission vlc visual-studio-code vmware-fusion wireshark
 fi
 
 if [ -d "/Applications/iTerm.app/" ]
