@@ -26,7 +26,7 @@ read -p "Do you wish to install homebrew defaults? " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-	# Instal homebrew libs & tools
+	# Install homebrew libs & tools
 	brew install binwalk exiftool fcrackzip ffmpeg gcc gdb gettext git-lfs gist gnupg hashcat imagemagick nmap nvm pinentry pipenv python3 radare2 readline sqlite sqlmap thefuck volatility wpscan
 fi
 
@@ -40,7 +40,7 @@ then
 	brew tap buo/cask-upgrade
 
 	# Install some default apps
-	brew cask install 1password alfred bartender caffeine calibre cloudapp discord docker dropbox droplr fantastical filezilla firefox franz go2shell handbrake istat-menus iterm2 java jdownloader keybase mactex meld metasploit microsoft-office notion open-in-code rocket runescape skype slack speedcrunch steam teamviewer telegram telegram-desktop the-unarchiver torbrowser transmission vlc visual-studio-code vmware-fusion wireshark
+	brew cask install 1password alfred bartender caffeine calibre cloudapp discord docker dropbox droplr fantastical filezilla firefox franz go2shell handbrake istat-menus iterm2 java jdownloader keybase mactex meld metasploit microsoft-office notion open-in-code rocket runescape skype slack speedcrunch steam teamviewer telegram telegram-desktop the-unarchiver torbrowser transmission vlc visual-studio-code vmware-fusion windscribe wireshark
 fi
 
 if [ -d "/Applications/iTerm.app/" ]
@@ -140,11 +140,19 @@ read -p "Do you wish to copy iTunes AppleScripts? " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-cp iTunesScripts ~/Library/iTunes/Scripts
+cp -R iTunesScripts ~/Library/iTunes/Scripts
 
 fi
 
-read -p "Do you wish to setup some Apple defaults? " -n 1 -r
+read -p "Do you wish to copy Wallpapers? " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+cp -R ./wp ~/Pictures
+
+fi
+
+read -p "Do you wish to setup Apple defaults? " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
