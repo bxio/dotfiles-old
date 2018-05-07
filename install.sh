@@ -547,6 +547,201 @@ then
 # Reset Launchpad, but keep the desktop wallpaper intact
   find "${HOME}/Library/Application Support/Dock" -name "*-*.db" -maxdepth 1 -delete
 
+###############################################################################
+# Time Machine                                                                #
+###############################################################################
+
+# Prevent Time Machine from prompting to use new hard drives as backup volume
+defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
+
+# Disable local Time Machine backups
+hash tmutil &> /dev/null && sudo tmutil disablelocal
+
+###############################################################################
+# Activity Monitor                                                            #
+###############################################################################
+
+# Show the main window when launching Activity Monitor
+defaults write com.apple.ActivityMonitor OpenMainWindow -bool true
+
+# Visualize CPU usage in the Activity Monitor Dock icon
+defaults write com.apple.ActivityMonitor IconType -int 5
+
+# Show all processes in Activity Monitor
+defaults write com.apple.ActivityMonitor ShowCategory -int 0
+
+# Sort Activity Monitor results by CPU usage
+defaults write com.apple.ActivityMonitor SortColumn -string "CPUUsage"
+defaults write com.apple.ActivityMonitor SortDirection -int 0
+
+###############################################################################
+# Address Book, Dashboard, iCal, TextEdit, and Disk Utility                   #
+###############################################################################
+
+# Enable the debug menu in Address Book
+  defaults write com.apple.addressbook ABShowDebugMenu -bool true
+
+# Enable Dashboard dev mode (allows keeping widgets on the desktop)
+  defaults write com.apple.dashboard devmode -bool true
+
+# Enable the debug menu in iCal (pre-10.8)
+  defaults write com.apple.iCal IncludeDebugMenu -bool true
+
+# Use plain text mode for new TextEdit documents
+  defaults write com.apple.TextEdit RichText -int 0
+# Open and save files as UTF-8 in TextEdit
+  defaults write com.apple.TextEdit PlainTextEncoding -int 4
+  defaults write com.apple.TextEdit PlainTextEncodingForWrite -int 4
+
+# Enable the debug menu in Disk Utility
+  defaults write com.apple.DiskUtility DUDebugMenuEnabled -bool true
+  defaults write com.apple.DiskUtility advanced-image-options -bool true
+
+# Auto-play videos when opened with QuickTime Player
+  defaults write com.apple.QuickTimePlayerX MGPlayMovieOnOpen -bool true
+
+###############################################################################
+# Mac App Store                                                               #
+###############################################################################
+
+# Enable the WebKit Developer Tools in the Mac App Store
+  defaults write com.apple.appstore WebKitDeveloperExtras -bool true
+
+# Enable Debug Menu in the Mac App Store
+  defaults write com.apple.appstore ShowDebugMenu -bool true
+
+# Enable the automatic update check
+  defaults write com.apple.SoftwareUpdate AutomaticCheckEnabled -bool true
+
+# Check for software updates daily, not just once per week
+  defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
+
+# Download newly available updates in background
+  defaults write com.apple.SoftwareUpdate AutomaticDownload -int 1
+
+# Install System data files & security updates
+  defaults write com.apple.SoftwareUpdate CriticalUpdateInstall -int 1
+
+# Automatically download apps purchased on other Macs
+  defaults write com.apple.SoftwareUpdate ConfigDataInstall -int 1
+
+# Turn on app auto-update
+  defaults write com.apple.commerce AutoUpdate -bool true
+
+# Allow the App Store to reboot machine on macOS updates
+  defaults write com.apple.commerce AutoUpdateRestartRequired -bool true
+
+###############################################################################
+# Photos                                                                      #
+###############################################################################
+
+# Prevent Photos from opening automatically when devices are plugged in
+  defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true
+
+###############################################################################
+# Messages                                                                    #
+###############################################################################
+
+# Disable automatic emoji substitution (i.e. use plain text smileys)
+  defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "automaticEmojiSubstitutionEnablediMessage" -bool false
+
+# Disable smart quotes as it’s annoying for messages that contain code
+  defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "automaticQuoteSubstitutionEnabled" -bool false
+
+# Disable continuous spell checking
+  defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "continuousSpellCheckingEnabled" -bool false
+
+###############################################################################
+# Google Chrome & Google Chrome Canary                                        #
+###############################################################################
+
+# Disable the all too sensitive backswipe on trackpads
+  defaults write com.google.Chrome AppleEnableSwipeNavigateWithScrolls -bool false
+  defaults write com.google.Chrome.canary AppleEnableSwipeNavigateWithScrolls -bool false
+
+# Disable the all too sensitive backswipe on Magic Mouse
+  defaults write com.google.Chrome AppleEnableMouseSwipeNavigateWithScrolls -bool false
+  defaults write com.google.Chrome.canary AppleEnableMouseSwipeNavigateWithScrolls -bool false
+
+# Use the system-native print preview dialog
+  defaults write com.google.Chrome DisablePrintPreview -bool true
+  defaults write com.google.Chrome.canary DisablePrintPreview -bool true
+
+# Expand the print dialog by default
+  defaults write com.google.Chrome PMPrintingExpandedStateForPrint2 -bool true
+  defaults write com.google.Chrome.canary PMPrintingExpandedStateForPrint2 -bool true
+
+###############################################################################
+# Transmission.app                                                            #
+###############################################################################
+
+# Use `~/Documents/Torrents` to store incomplete downloads
+  defaults write org.m0k.transmission UseIncompleteDownloadFolder -bool true
+  defaults write org.m0k.transmission IncompleteDownloadFolder -string "${HOME}/Documents/Torrents"
+
+# Use `~/Downloads` to store completed downloads
+  defaults write org.m0k.transmission DownloadLocationConstant -bool true
+
+# Don’t prompt for confirmation before downloading
+  defaults write org.m0k.transmission DownloadAsk -bool false
+  defaults write org.m0k.transmission MagnetOpenAsk -bool false
+
+# Don’t prompt for confirmation before removing non-downloading active transfers
+  defaults write org.m0k.transmission CheckRemoveDownloading -bool true
+
+# Trash original torrent files
+  defaults write org.m0k.transmission DeleteOriginalTorrent -bool true
+
+# Hide the donate message
+  defaults write org.m0k.transmission WarningDonate -bool false
+# Hide the legal disclaimer
+  defaults write org.m0k.transmission WarningLegal -bool false
+
+# IP block list.
+# Source: https://giuliomac.wordpress.com/2014/02/19/best-blocklist-for-transmission/
+  defaults write org.m0k.transmission BlocklistNew -bool true
+  defaults write org.m0k.transmission BlocklistURL -string "http://john.bitsurge.net/public/biglist.p2p.gz"
+  defaults write org.m0k.transmission BlocklistAutoUpdate -bool true
+
+# Randomize port on launch
+  defaults write org.m0k.transmission RandomPort -bool true
+
+###############################################################################
+# Tweetbot.app                                                                #
+###############################################################################
+
+# Bypass the annoyingly slow t.co URL shortener
+  defaults write com.tapbots.TweetbotMac OpenURLsDirectly -bool true
+
+###############################################################################
+# Kill affected applications                                                  #
+###############################################################################
+
+for app in "Activity Monitor" \
+	"Address Book" \
+	"Calendar" \
+	"cfprefsd" \
+	"Contacts" \
+	"Dock" \
+	"Finder" \
+	"Google Chrome Canary" \
+	"Google Chrome" \
+	"Mail" \
+	"Messages" \
+	"Opera" \
+	"Photos" \
+	"Safari" \
+	"SizeUp" \
+	"Spectacle" \
+	"SystemUIServer" \
+	"Terminal" \
+	"Transmission" \
+	"Tweetbot" \
+	"Twitter" \
+	"iCal"; do
+killall "${app}" &> /dev/null
+
+
   # Enable Secure Keyboard Entry in Terminal.app
   # See: https://security.stackexchange.com/a/47786/8918
   defaults write com.apple.terminal SecureKeyboardEntry -bool true
