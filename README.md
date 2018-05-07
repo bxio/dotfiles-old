@@ -1,5 +1,11 @@
 # [bxio](https://github.com/bxio)'s Dotfiles
 
+ - [] Installs Homebrew
+ - [] Taps Caskroom/casks
+ - [] Configures iTerm2
+ - [] Copies iTunes Scripts
+ - [] Wallpapers
+
 ## Installs the following applications:
 
 * [1password](https://1password.com)
