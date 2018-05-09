@@ -8,7 +8,7 @@ else
 fi
 
 # Homebrew process
-read -p "Do you wish to install homebrew? " -n 1 -r
+read -p "Would you like to install homebrew? " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
@@ -22,18 +22,18 @@ then
 
 fi
 
-read -p "Do you wish to install homebrew defaults? " -n 1 -r
+read -p "Would you like to install homebrew defaults? " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 	# Install homebrew libs & tools
-	brew install binwalk exiftool fcrackzip ffmpeg gcc gdb gettext git-lfs gist gnupg hashcat imagemagick nmap nvm pinentry pipenv python3 radare2 readline sqlite sqlmap thefuck volatility wpscan
+	brew install binwalk exiftool fcrackzip ffmpeg gcc gdb gettext git-lfs gist gnupg hashcat imagemagick nmap nvm pinentry pipenv pv python3 radare2 readline sqlite sqlmap thefuck volatility wpscan
 
   brew cleanup
 fi
 
 
-read -p "Do you wish to install casks? " -n 1 -r
+read -p "Would you like to install casks? " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
@@ -42,14 +42,28 @@ then
 	brew tap buo/cask-upgrade
 
 	# Install some default apps
-	brew cask install 1password alfred bartender caffeine calibre cloudapp discord docker dropbox droplr fantastical filezilla firefox franz go2shell handbrake istat-menus iterm2 java jdownloader keybase mactex meld metasploit microsoft-office notion open-in-code rocket runescape skype slack speedcrunch steam teamviewer telegram telegram-desktop the-unarchiver torbrowser transmission vlc visual-studio-code vmware-fusion windscribe wireshark
+	brew cask install 1password alfred bartender caffeine calibre cloudapp discord docker dropbox droplr fantastical filezilla firefox franz go2shell handbrake imageoptim istat-menus iterm2 java jdownloader keybase mactex meld metasploit microsoft-office notion open-in-code rocket runescape skype slack speedcrunch steam teamviewer telegram telegram-desktop the-unarchiver torbrowser transmission vlc visual-studio-code vmware-fusion windscribe wireshark
+
+  brew cleanup
+fi
+
+read -p "Would you like to install QuickLook Utilities?? (a reboot is required)" -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+	# Tap brew repos
+	brew tap caskroom/cask
+	brew tap buo/cask-upgrade
+
+	# Install some default apps
+	brew cask install qlcolorcode qlstephen qlmarkdown quicklook-json qlimagesize webpquicklook suspicious-package quicklookase
 
   brew cleanup
 fi
 
 if [ -d "/Applications/iTerm.app/" ]
 then
-	read -p "Do you wish to setup iTerm configs? " -n 1 -r
+	read -p "Would you like to setup iTerm configs? " -n 1 -r
 	echo
 	if [[ $REPLY =~ ^[Yy]$ ]]
 	then
@@ -72,7 +86,7 @@ else
 fi
 
 
-read -p "Do you wish to install Oh-My-ZSH? " -n 1 -r
+read -p "Would you like to install Oh-My-ZSH? " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
@@ -80,7 +94,7 @@ then
 	curl -L http://install.ohmyz.sh | sh
 fi
 
-read -p "Do you wish to link your dotfiles? (old ones will be backed up to ~/dotfiles_old) " -n 1 -r
+read -p "Would you like to link your dotfiles? (old ones will be backed up to ~/dotfiles_old) " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
@@ -130,7 +144,7 @@ then
 
 fi
 
-read -p "Do you wish to setup nodejs? " -n 1 -r
+read -p "Would you like to setup nodejs? " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
@@ -140,23 +154,24 @@ then
 	npm install pm2 -g
 fi
 
-read -p "Do you wish to copy iTunes AppleScripts? " -n 1 -r
+read -p "Would you like to copy iTunes AppleScripts? " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-cp -R iTunesScripts ~/Library/iTunes/Scripts
+curl -L https://raw.githubusercontent.com/bxio/dotfiles/master/iTunesScripts/SongNameToMovement.applescript -o ~/Library/iTunes/Scripts/SongNameToMovement.applescript
 
 fi
 
-read -p "Do you wish to copy Wallpapers? " -n 1 -r
+read -p "Would you like to copy Wallpapers? " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-cp -R ./wp ~/Pictures
-
+curl -L https://raw.githubusercontent.com/bxio/dotfiles/master/wp.tar.gz -o ~/Pictures/wp.tar.gz
+tar -zxf ~/Pictures/wp.tar.gz -C ~/Pictures
+rm ~/Pictures/wp.tar.gz
 fi
 
-read -p "Do you wish to setup Apple defaults? " -n 1 -r
+read -p "Would you like to setup Apple defaults? " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
