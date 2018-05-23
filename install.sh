@@ -32,6 +32,16 @@ then
   brew cleanup
 fi
 
+read -p "Would you like to install webdev tools? " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+	# Install some default apps
+	brew install heroku
+  brew cask install dotnet-sdk insomnia mongodb mongodb-community paw postman open-in-code visual-studio-code wireshark
+  brew cleanup
+fi
+
 
 read -p "Would you like to install casks? " -n 1 -r
 echo
@@ -42,7 +52,7 @@ then
 	brew tap buo/cask-upgrade
 
 	# Install some default apps
-	brew cask install 1password alfred bartender caffeine calibre cloudapp discord docker dropbox droplr fantastical filezilla firefox franz go2shell handbrake imageoptim istat-menus iterm2 java jdownloader keybase mactex meld metasploit microsoft-office notion open-in-code rocket runescape skype slack speedcrunch steam teamviewer telegram telegram-desktop the-unarchiver torbrowser transmission vlc visual-studio-code vmware-fusion windscribe wireshark
+	brew cask install 1password alfred bartender caffeine calibre discord docker dropbox droplr fantastical filezilla firefox franz go2shell handbrake imageoptim istat-menus iterm2 java jdownloader keybase mactex meld metasploit microsoft-office notion rocket runescape skype slack steam teamviewer telegram telegram-desktop the-unarchiver torbrowser transmission vlc vmware-fusion windscribe
 
   brew cleanup
 fi
@@ -344,13 +354,13 @@ then
   # Show indicator lights for open applications in the Dock
   defaults write com.apple.dock show-process-indicators -bool true
 
-# Wipe all (default) app icons from the Dock
-# This is only really useful when setting up a new Mac, or if you don’t use
-# the Dock to launch apps.
-#defaults write com.apple.dock persistent-apps -array
+  # Wipe all (default) app icons from the Dock
+  # This is only really useful when setting up a new Mac, or if you don’t use
+  # the Dock to launch apps.
+  #defaults write com.apple.dock persistent-apps -array
 
-# Show only open applications in the Dock
-#defaults write com.apple.dock static-only -bool true
+  # Show only open applications in the Dock
+  #defaults write com.apple.dock static-only -bool true
 
   # Don’t animate opening applications from the Dock
   defaults write com.apple.dock launchanim -bool false
@@ -727,34 +737,39 @@ defaults write com.apple.ActivityMonitor SortDirection -int 0
 
 # Bypass the annoyingly slow t.co URL shortener
   defaults write com.tapbots.TweetbotMac OpenURLsDirectly -bool true
+fi
 
-###############################################################################
+read -p "Would you like to restart affected apps? " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+	###############################################################################
 # Kill affected applications                                                  #
 ###############################################################################
 
-for app in "Activity Monitor" \
-	"Address Book" \
-	"Calendar" \
-	"cfprefsd" \
-	"Contacts" \
-	"Dock" \
-	"Finder" \
-	"Google Chrome Canary" \
-	"Google Chrome" \
-	"Mail" \
-	"Messages" \
-	"Opera" \
-	"Photos" \
-	"Safari" \
-	"SizeUp" \
-	"Spectacle" \
-	"SystemUIServer" \
-	"Terminal" \
-	"Transmission" \
-	"Tweetbot" \
-	"Twitter" \
-	"iCal"; do
-killall "${app}" &> /dev/null
+  for app in "Activity Monitor" \
+    "Address Book" \
+    "Calendar" \
+    "cfprefsd" \
+    "Contacts" \
+    "Dock" \
+    "Finder" \
+    "Google Chrome Canary" \
+    "Google Chrome" \
+    "Mail" \
+    "Messages" \
+    "Opera" \
+    "Photos" \
+    "Safari" \
+    "SizeUp" \
+    "Spectacle" \
+    "SystemUIServer" \
+    "Terminal" \
+    "Transmission" \
+    "Tweetbot" \
+    "Twitter" \
+    "iCal"; do
+  killall "${app}" &> /dev/null
 
 
   # Enable Secure Keyboard Entry in Terminal.app
@@ -763,6 +778,4 @@ killall "${app}" &> /dev/null
 
   killall SystemUIServer
 
-	# Prompt for re-login
-	echo "Some of these settings will require you to re-login..."
 fi
