@@ -15,7 +15,7 @@
  - [] Copies iTunes Scripts
  - [] Wallpapers
 
-# Installs the following applications:
+# Installs the following applications (among others):
 
 * [1password](https://1password.com)
 * [alfred](https://alfredapp.com)
@@ -60,5 +60,11 @@
 * [vmware-fusion](https://www.vmware.com/products/fusion.html)
 * [wireshark](https://www.wireshark.org)
 
-To Install, just
-```curl https://raw.githubusercontent.com/bxio/dotfiles/master/install.sh | sh```
+
+Install
+-------
+
+Download and run the script:
+
+```curl https://raw.githubusercontent.com/bxio/dotfiles/master/install.sh | sh
+```
