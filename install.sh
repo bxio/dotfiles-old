@@ -52,7 +52,7 @@ then
 	brew tap buo/cask-upgrade
 
 	# Install some default apps
-	brew cask install 1password alfred bartender caffeine calibre discord docker dropbox droplr fantastical filezilla firefox franz go2shell handbrake imageoptim istat-menus iterm2 java jdownloader keybase mactex meld metasploit microsoft-office notion rocket runescape skype slack steam teamviewer telegram telegram-desktop the-unarchiver torbrowser transmission vlc vmware-fusion windscribe
+	brew cask install 1password alfred bartender caffeine calibre discord docker dropbox droplr fantastical filezilla firefox franz go2shell handbrake imageoptim istat-menus iterm2 java jdownloader keybase little-snitch mactex meld metasploit microsoft-office notion rocket runescape skype slack steam teamviewer telegram telegram-desktop the-unarchiver torbrowser transmission vlc vmware-fusion windscribe
 
   brew cleanup
 fi
@@ -176,9 +176,7 @@ read -p "Would you like to copy Wallpapers? " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-curl -L https://raw.githubusercontent.com/bxio/dotfiles/master/wp.tar.gz -o ~/Pictures/wp.tar.gz
-tar -zxf ~/Pictures/wp.tar.gz -C ~/Pictures
-rm ~/Pictures/wp.tar.gz
+tar -zxf wp.tar.gz -C ~/Pictures
 fi
 
 read -p "Would you like to setup Apple defaults? " -n 1 -r
