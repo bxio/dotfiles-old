@@ -52,7 +52,7 @@ then
 	brew tap buo/cask-upgrade
 
 	# Install some default apps
-	brew cask install 1password alfred bartender caffeine calibre discord docker dropbox droplr fantastical filezilla firefox franz go2shell handbrake imageoptim istat-menus iterm2 java jdownloader keybase little-snitch mactex meld metasploit microsoft-office notion rocket runescape skype slack steam teamviewer telegram telegram-desktop the-unarchiver torbrowser transmission vlc vmware-fusion windscribe
+	brew cask install 1password alfred bartender caffeine calibre discord docker dropbox droplr fantastical filezilla firefox franz go2shell handbrake imageoptim istat-menus iterm2 java jdownloader keybase little-snitch mactex meld metasploit microsoft-office notion rocket runescape skype slack steam teamviewer telegram telegram-desktop textexpander the-unarchiver torbrowser transmission vlc vmware-fusion windscribe whatpulse xld
 
   brew cleanup
 fi
@@ -61,14 +61,18 @@ read -p "Would you like to install QuickLook Utilities?? (a reboot is required)"
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-	# Tap brew repos
-	brew tap caskroom/cask
-	brew tap buo/cask-upgrade
-
 	# Install some default apps
 	brew cask install qlcolorcode qlstephen qlmarkdown quicklook-json qlimagesize webpquicklook suspicious-package quicklookase
 
   brew cleanup
+fi
+
+read -p "Would you like to install Sonos?" -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+	# Install some default apps
+	brew install homebrew/cask-drivers/sonos
 fi
 
 if [ -d "/Applications/iTerm.app/" ]

@@ -66,5 +66,4 @@ Install
 
 Download and run the script:
 
-```curl https://raw.githubusercontent.com/bxio/dotfiles/master/install.sh | sh
-```
+```curl https://raw.githubusercontent.com/bxio/dotfiles/master/install.sh | sh```
