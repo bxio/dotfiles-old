@@ -93,8 +93,11 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-alias brewski='brew update && brew upgrade && brew cleanup; brew doctor'
+# Running 4 brew commands with one word is always nice.
+alias brewski='brew update && brew upgrade && brew cleanup -s; brew doctor'
+# Sheldor is afk
 alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
+## Docker Commands
 # Kill all running containers.
 alias dockerkillall='docker kill $(docker ps -q)'
 # Delete all stopped containers.
